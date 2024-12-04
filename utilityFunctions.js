@@ -12,4 +12,11 @@ function prettyPrint(node, prefix = "", isLeft = true) {
   }
 }
 
-export { prettyPrint };
+function inorder(root){
+  if(root!=null){
+    inorder(root.left);
+    console.log(root.data);
+    inorder(root.right);
+  }
+}
+export { prettyPrint, inorder };
