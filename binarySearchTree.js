@@ -28,4 +28,28 @@ export class Tree {
     root.right = this.buildTree(arr, mid + 1, end);
     return root;
   }
+
+  insert(value){
+    if(!this.root){
+      this.root = new Node(value);
+      return;
+    }
+      this.#_recInsert(this.root, value);
+  }
+
+  #_recInsert(root, value){
+    //base case
+    if(root == null){
+      return new Node(value);
+    }
+
+    // Recursively insert into left or right subtree
+    if(value < root.data){
+      root.left = this.#_recInsert(root.left, value)
+    }
+    else if (value > root.data){
+      root.right = this.#_recInsert(root.right, value);
+    }
+    return root; //also ignores duplicates
+  }
 }
