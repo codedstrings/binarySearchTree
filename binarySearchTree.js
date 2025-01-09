@@ -30,6 +30,7 @@ export class Tree {
     return root;
   }
 
+  //#region insert
   insert(value){
     if(!this.root){
       this.root = new Node(value);
@@ -53,7 +54,9 @@ export class Tree {
     }
     return root; //also ignores duplicates
   }
+//#endregion
 
+  //#region find
   find(value){
     let node =  this.#_recFind(this.root, value);
     return node? node : 'Node not found';
@@ -70,7 +73,9 @@ export class Tree {
       return this.#_recFind(root.right, value);
     }
   }
+  //#endregion
 
+  //#region delete
   delete(value){
     this.root = this.#_recDelete(this.root, value);
     // prettyPrint(this.root);//for testing
@@ -110,6 +115,7 @@ export class Tree {
     }
     return root;
   }
+ 
   #_findMin(root){
     let current = root;
     while(current.left != null){
@@ -117,5 +123,6 @@ export class Tree {
     }
     return current
   }
+  //#endregion
 
 }
