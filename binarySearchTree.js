@@ -55,11 +55,11 @@ export class Tree {
   }
 
   find(value){
-    let nodeToDel = this.#_recFind(this.root, value);
-    console.log(nodeToDel);
+    let node =  this.#_recFind(this.root, value);
+    return node? node : 'Node not found';
   }
   #_recFind(root, value){
-    if(root == null) return 'Node not found';
+    if(root == null) return root;
     if(root.data == value){
       return root //node found
     }
