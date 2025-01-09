@@ -52,4 +52,22 @@ export class Tree {
     }
     return root; //also ignores duplicates
   }
+
+  find(value){
+    let nodeToDel = this.#_recFind(this.root, value);
+    console.log(nodeToDel);
+  }
+  #_recFind(root, value){
+    if(root == null) return 'Node not found';
+    if(root.data == value){
+      return root //node found
+    }
+    else if(value < root.data){
+      return this.#_recFind(root.left, value);
+    } 
+    else if(value > root.data){
+      return this.#_recFind(root.right, value);
+    }
+  }
+
 }
