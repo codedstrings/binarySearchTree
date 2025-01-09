@@ -125,4 +125,39 @@ export class Tree {
   }
   //#endregion
 
+  //#region levelOrder
+  getLevelOrderArr(){
+    let result = [];
+    let queue = [];
+
+    if(this.root == null) return result; //handle empty tree
+
+    queue.push(this.root);//initialize queue with root
+    while(queue.length > 0){
+      let node = queue.shift();
+      result.push(node.data);
+      if(node.left != null) queue.push(node.left);
+      if(node.right != null) queue.push(node.right);
+    }
+    return result;
+  }
+
+  levelOrder(callBack){
+    if(callBack == null) {
+      throw new Error("Callback function is required");
+    }
+    if(this.root == null) {
+      throw new Error("Tree is empty");
+    };
+
+    let queue = [];
+    queue.push(this.root);//initialize queue with root
+    while(queue.length > 0){
+      let node = queue.shift();
+      callBack(node);
+      if(node.left != null) queue.push(node.left);
+      if(node.right != null) queue.push(node.right);
+    }
+  }
+  //#endregion
 }
