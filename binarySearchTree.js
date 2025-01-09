@@ -160,4 +160,76 @@ export class Tree {
     }
   }
   //#endregion
+
+  //#region inorder
+  inorder(callBack){
+    if(callBack == null) {
+      throw new Error("Callback function is required");
+    }
+    if(this.root == null) {
+      throw new Error("Tree is empty");
+    };
+    const recInorder = (root, callBack) => {
+      if(root!=null){
+        recInorder(root.left, callBack);
+        callBack(root);
+        recInorder(root.right, callBack);
+      }
+    }
+    recInorder(this.root, callBack);
+  }
+  //#endregion
+
+  //#region preOrder
+  preOrder(callBack){
+    if(callBack == null) {
+      throw new Error("Callback function is required");
+    }
+    if(this.root == null) {
+      throw new Error("Tree is empty");
+    };
+    const recPreorder = (root, callBack) => {
+      if(root!=null){
+        callBack(root);
+        recPreorder(root.left, callBack);
+        recPreorder(root.right, callBack);
+      }
+    }
+    recPreorder(this.root, callBack);
+  }
+  //#endregion
+
+  //#region postOrder
+  postOrder(callBack){
+    if(callBack == null) {
+      throw new Error("Callback function is required");
+    }
+    if(this.root == null) {
+      throw new Error("Tree is empty");
+    };
+    const recPostorder = (root, callBack) => {
+      if(root!=null){
+        recPostorder(root.left, callBack);
+        recPostorder(root.right, callBack);
+        callBack(root);
+      }
+    }
+    recPostorder(this.root, callBack);
+  } 
+  //#endregion 
+
+  //#better code organization example: inorder
+  // inorder(callback) {
+  //   let result = [];
+  //   const recInorder = (root) => {
+  //     if (root != null) {
+  //       recInorder(root.left);
+  //       result.push(root.data);
+  //       recInorder(root.right);
+  //     }
+  //   };
+  //   recInorder(this.root);
+  //   return callback ? result.forEach(callback) : result;
+  // }
+  //#endregion
 }
