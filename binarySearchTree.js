@@ -178,6 +178,20 @@ export class Tree {
     }
     recInorder(this.root, callBack);
   }
+
+  //better code organization example: inorder
+  // inorder(callback) {
+  //   let result = [];
+  //   const recInorder = (root) => {
+  //     if (root != null) {
+  //       recInorder(root.left);
+  //       result.push(root.data);
+  //       recInorder(root.right);
+  //     }
+  //   };
+  //   recInorder(this.root);
+  //   return callback ? result.forEach(callback) : result;
+  // }
   //#endregion
 
   //#region preOrder
@@ -216,20 +230,5 @@ export class Tree {
     }
     recPostorder(this.root, callBack);
   } 
-  //#endregion 
-
-  //#better code organization example: inorder
-  // inorder(callback) {
-  //   let result = [];
-  //   const recInorder = (root) => {
-  //     if (root != null) {
-  //       recInorder(root.left);
-  //       result.push(root.data);
-  //       recInorder(root.right);
-  //     }
-  //   };
-  //   recInorder(this.root);
-  //   return callback ? result.forEach(callback) : result;
-  // }
   //#endregion
 }
