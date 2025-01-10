@@ -240,4 +240,44 @@ export class Tree {
     return 1 + Math.max(this.height(node.left), this.height(node.right));
   }
   //#endregion
+  
+  //#region depth
+  depth(node){
+    // Handle the case where the input node is null
+    if (node == null) return -1;
+    
+    // iterative implementation
+    let depth = 0;
+    let current = this.root;
+    while(current != null){
+      if(current.data == node.data) return depth; //node found 
+      if(node.data < current.data){
+        current = current.left; //move to left child
+      }
+      else{
+        current = current.right; //move to right child
+      }
+      depth++;
+    }
+    return -1; //node not found
+
+
+    //recursive implementation
+    const recSearch = (root, value, depth) => {
+      // If we reach a null node, return -1
+      if(root == null) return -1; 
+
+      // If we find the node, return the depth
+      if(root.data == value) return depth; 
+
+      if(value < root.data){
+        return recSearch(root.left, value, depth+1); //search left subtree
+      }else if(value > root.data){
+        return recSearch(root.right, value, depth+1); //search right subtree
+      }
+    }
+    return recSearch(this.root, node.data, 0);
+
+
+  }
 }
