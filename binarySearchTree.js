@@ -279,4 +279,21 @@ export class Tree {
     return recSearch(this.root, node.data, 0);
   }
   //#endregion
+
+  //#region isBalanced
+  isBalanced() {
+    const recIsBalanced = (root) => {
+      if (root == null) return true; //base case
+
+      if (Math.abs(this.height(root.left) - this.height(root.right)) > 1) {
+        return false;
+      }
+
+      // Check if both subtrees are balanced
+      return recIsBalanced(root.left) && recIsBalanced(root.right);
+    }
+
+    return recIsBalanced(this.root);
+  }
+  //#endregion
 }
