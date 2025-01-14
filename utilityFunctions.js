@@ -20,4 +20,8 @@ function inorder(root, inorderArr = []) {
   }
   return inorderArr;
 }
-export { prettyPrint, inorder };
+
+function generateRandomArray(size, max) {
+  return Array.from({length: size}, () => Math.floor(Math.random() * max));
+}
+export { prettyPrint, inorder, generateRandomArray };
