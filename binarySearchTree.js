@@ -162,7 +162,7 @@ export class Tree {
   //#endregion
 
   //#region inorder
-  inorder(callBack){
+  inOrder(callBack){
     if(callBack == null) {
       throw new Error("Callback function is required");
     }
@@ -302,7 +302,7 @@ export class Tree {
 
     //call buildTree with inorder array of the tree
     let inOrderArr = [];
-    this.inorder((node)=>inOrderArr.push(node.data));
+    this.inOrder((node)=>inOrderArr.push(node.data));
     this.root = this.buildTree(inOrderArr);
   }
   //#endregion
