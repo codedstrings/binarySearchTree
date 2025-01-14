@@ -17,7 +17,7 @@ export class Tree {
   }
 
   buildTree(arr, start = 0, end = arr.length - 1) {
-    console.log(`Building tree for range: ${start} to ${end}`);
+    // console.log(`Building tree for range: ${start} to ${end}`); //for testing
 
     //base condition
     if (start > end) return null;
