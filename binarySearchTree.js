@@ -280,7 +280,7 @@ export class Tree {
   }
   //#endregion
 
-  //#region isBalanced
+  //#region tree balancing
   isBalanced() {
     const recIsBalanced = (root) => {
       if (root == null) return true; //base case
@@ -294,6 +294,16 @@ export class Tree {
     }
 
     return recIsBalanced(this.root);
+  }
+
+  rebalance(){
+    //handle empty tree;
+    if(!this.root) return; 
+
+    //call buildTree with inorder array of the tree
+    let inOrderArr = [];
+    this.inorder((node)=>inOrderArr.push(node.data));
+    this.root = this.buildTree(inOrderArr);
   }
   //#endregion
 }
